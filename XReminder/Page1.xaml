@@ -1,0 +1,130 @@
+﻿<Page x:Class="XReminder.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:XReminder"
+      mc:Ignorable="d" 
+      d:DesignHeight="730" d:DesignWidth="700" Background="#333333"
+      Title="Aufgabe Details">
+    <Page.Resources>
+        <ImageBrush x:Key="addIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/plusIcon.png"></ImageBrush>
+        <ImageBrush x:Key="suchIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/suchIcon.png"></ImageBrush>
+        <ImageBrush x:Key="checkIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/checkIcon.png"></ImageBrush>
+        <ImageBrush x:Key="editIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/editIcon.png"></ImageBrush>
+        <ImageBrush x:Key="trashIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/trashIcon.png"></ImageBrush>
+        <ImageBrush x:Key="backIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/backIcon.png"></ImageBrush>
+        <ImageBrush x:Key="checkAllIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/checkAllIcon.png"></ImageBrush>
+
+        <ImageBrush x:Key="addIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/plusIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="suchIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/suchIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="checkIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/checkIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="editIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/editIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="trashIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/trashIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="backIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/backIcon_checked.png"></ImageBrush>
+        <ImageBrush x:Key="checkAllIcon_checked" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/checkAllIcon_checked.png"></ImageBrush>
+
+        <ImageBrush x:Key="greenCheckIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/greenCheckIcon.png"></ImageBrush>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
+        <UniformGrid Grid.Row="1">
+            <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" FontSize="30" Text="Auto waschen" Foreground="#ffffff"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Text="03.06.2022" Foreground="#ffffff"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Auto waschen und Staubsaugen" Foreground="#ffffff"></TextBlock>
+            </Grid>
+        </UniformGrid>
+        <Grid Grid.Row="2" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="50" Height="50" Background="{StaticResource backIcon}" Click="BackButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource trashIcon}" Click="DelReminder(1)">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="4" Width="50" Height="50" Background="{StaticResource checkIcon}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="6" Width="50" Height="50" Background="{StaticResource editIcon}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Name="BestaetigungGrid" Visibility="Hidden">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.6" Color="#222222"></SolidColorBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="480"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1" Grid.Row="1" Background="#222222" BorderBrush="Black" BorderThickness="1" CornerRadius="30">
+                <Grid Background="#222222" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Left" FontSize="30" Text="Aufgabe löschen" Foreground="#ffffff"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Left" FontSize="15" Text="Wollen Sie die Aufgabe wirklich löschen?" Foreground="#ffffff"></TextBlock>
+                    <Button Grid.Row="2" Grid.Column="0" Width="200" Height="40" Background="#ffffff" Content="Abbrechen"></Button>
+                    <Button Grid.Row="2" Grid.Column="2" Width="200" Height="40" Background="#e34444" Content="Löschen" Foreground="#ffffff"></Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
