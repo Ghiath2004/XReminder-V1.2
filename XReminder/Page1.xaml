@@ -71,7 +71,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource trashIcon}" Click="DelReminder(1)">
+            <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource trashIcon}" Click="DelReminder" Tag="1">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>

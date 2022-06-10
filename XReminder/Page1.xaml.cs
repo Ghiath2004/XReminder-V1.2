@@ -34,8 +34,10 @@ namespace XReminder
             mainWindow.Content = Page2;
         }
 
-        private void DelReminder(int reminderID)
+        private void DelReminder(object sender, RoutedEventArgs e)
         {
+            var RemID = ((Button)sender).Tag;
+
             Grid bestaetigungGrid = BestaetigungGrid;
             bestaetigungGrid.Visibility = Visibility.Visible;
         }
