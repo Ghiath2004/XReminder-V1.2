@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:XReminder"
       mc:Ignorable="d" 
       d:DesignHeight="730" d:DesignWidth="700" Background="#333333"
-      Title="Aufgabe Details">
+      Title="Aufgabe Details" Loaded="FillReminder">
     <Page.Resources>
         <ImageBrush x:Key="addIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/plusIcon.png"></ImageBrush>
         <ImageBrush x:Key="suchIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/suchIcon.png"></ImageBrush>
@@ -48,9 +48,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" FontSize="30" Text="Auto waschen" Foreground="#ffffff"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Text="03.06.2022" Foreground="#ffffff"></TextBlock>
-                <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Auto waschen und Staubsaugen" Foreground="#ffffff"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" FontSize="30" Text="Auto waschen" Foreground="#ffffff" Name="Titel"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Text="03.06.2022" Foreground="#ffffff" Name="Datum"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Auto waschen und Staubsaugen" Foreground="#ffffff" Name="Bem"></TextBlock>
             </Grid>
         </UniformGrid>
         <Grid Grid.Row="2" HorizontalAlignment="Right">
@@ -78,14 +78,14 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="4" Width="50" Height="50" Background="{StaticResource checkIcon}">
+            <Button Grid.Column="4" Width="50" Height="50" Background="{StaticResource checkIcon}" Click="checkReminder" Name="checkBtn">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="6" Width="50" Height="50" Background="{StaticResource editIcon}" Click="editRem" Tag="78">
+            <Button Grid.Column="6" Width="50" Height="50" Background="{StaticResource editIcon}" Click="editRem">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>

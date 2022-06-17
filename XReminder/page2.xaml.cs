@@ -27,6 +27,8 @@ namespace XReminder
         string remBem;
         string remPrio;
         int aktID = 0;
+        int detailID = 0;
+        int checkID = 0;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
@@ -109,7 +111,15 @@ namespace XReminder
                     btn1.Width = 50;
                     btn1.Height = 50;
                     btn1.Resources.Add(typeof(Border), style);
-                    btn1.Background = (Brush)this.FindResource("checkIcon");
+                    if(eleContent["Erledigt"] == "Nein")
+                    {
+                        btn1.Background = (Brush)this.FindResource("checkIcon");
+                    } else
+                    {
+                        btn1.Background = (Brush)this.FindResource("greenCheckIcon");
+                    }
+                    btn1.Tag = remID.ToString();
+                    btn1.Click += new RoutedEventHandler(checkReminder);
                     remGrid.Children.Add(btn1);
 
                     Button btn2 = new Button();
@@ -120,6 +130,8 @@ namespace XReminder
                     btn2.Height = 50;
                     btn2.Resources.Add(typeof(Border), style);
                     btn2.Background = (Brush)this.FindResource("suchIcon");
+                    btn2.Tag = remID.ToString();
+                    btn2.Click += new RoutedEventHandler(DetailButton_Click);
                     remGrid.Children.Add(btn2);
 
                     Reminders.Children.Add(remGrid);
@@ -135,12 +147,25 @@ namespace XReminder
 
         private void DetailButton_Click(object sender, RoutedEventArgs e)
         {
-            var RemID = ((Button)sender).Tag;
+            detailID = Int32.Parse((string)((Button)sender).Tag);
 
-            Page1 page1 = new Page1(mainWindow, aktID, Elements);
+            Page1 page1 = new Page1(mainWindow, aktID, Elements, detailID);
             mainWindow.Content = page1;
+        }
 
-            page1.Tag = RemID;
+        private void checkReminder(object sender, RoutedEventArgs e)
+        {
+            checkID = Int32.Parse((string)((Button)sender).Tag);
+            if (Elements[checkID]["Erledigt"] == "Nein")
+            {
+                Elements[checkID]["Erledigt"] = "Ja";
+                ((Button)sender).Background = (Brush)this.FindResource("greenCheckIcon");
+            }
+            else
+            {
+                Elements[checkID]["Erledigt"] = "Nein";
+                ((Button)sender).Background = (Brush)this.FindResource("checkIcon");
+            }
         }
     }
 }

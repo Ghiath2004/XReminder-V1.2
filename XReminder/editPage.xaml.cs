@@ -21,16 +21,18 @@ namespace XReminder
     public partial class editPage : Page
     {
         int aktID = 0;
+        int editID = 0;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
 
-        public editPage(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
+        public editPage(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements, int toEditID)
         {
             InitializeComponent();
             mainWindow = w;
             aktID = ID;
             Elements = allElements;
+            editID = toEditID;
         }
 
         private void FillReminder(object sender, RoutedEventArgs e)

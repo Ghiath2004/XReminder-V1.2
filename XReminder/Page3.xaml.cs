@@ -57,6 +57,7 @@ namespace XReminder
             newEle["Kat"] = remKat;
             newEle["Bem"] = remBem;
             newEle["Prio"] = remPrio;
+            newEle["Erledigt"] = "Nein";
 
             Elements[newID] = newEle;
 

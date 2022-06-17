@@ -41,15 +41,5 @@ namespace XReminder
             Page3 page3 = new Page3(this, 0, new Dictionary<int, Dictionary<string, string>>());
             this.Content = page3;
         }
-
-        private void DetailButton_Click(object sender, RoutedEventArgs e)
-        {
-            var RemID = ((Button)sender).Tag;
-
-            Page1 page1 = new Page1(this, 0, new Dictionary<int, Dictionary<string, string>>());
-            this.Content = page1;
-
-            page1.Tag = RemID;
-        }
     }
 }

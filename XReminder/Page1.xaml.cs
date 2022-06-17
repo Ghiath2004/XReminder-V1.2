@@ -21,16 +21,29 @@ namespace XReminder
     public partial class Page1 : Page
     {
         int aktID = 0;
+        int detailID = 0;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
 
-        public Page1(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
+        public Page1(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements, int detID)
         {
             InitializeComponent();
             mainWindow = w;
             aktID = ID;
             Elements = allElements;
+            detailID = detID;
+        }
+
+        private void FillReminder(object sender, RoutedEventArgs e)
+        {
+            Titel.Text = Elements[detailID]["Titel"];
+            Datum.Text = Elements[detailID]["Datum"];
+            Bem.Text = Elements[detailID]["Bem"];
+            if(Elements[detailID]["Erledigt"] == "Ja")
+            {
+                checkBtn.Background = (Brush)this.FindResource("greenCheckIcon");
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -47,8 +60,6 @@ namespace XReminder
 
         private void delRem(object sender, RoutedEventArgs e)
         {
-            var RemID = this.Tag;
-
             page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
@@ -61,12 +72,21 @@ namespace XReminder
 
         private void editRem(object sender, RoutedEventArgs e)
         {
-            var RemID = ((Button)sender).Tag;
-
-            editPage editpage = new editPage(mainWindow, aktID, Elements);
+            editPage editpage = new editPage(mainWindow, aktID, Elements, detailID);
             mainWindow.Content = editpage;
+        }
 
-            editpage.Tag = RemID;
+        private void checkReminder(object sender, RoutedEventArgs e)
+        {
+            if(Elements[detailID]["Erledigt"] == "Nein")
+            {
+                Elements[detailID]["Erledigt"] = "Ja";
+                checkBtn.Background = (Brush)this.FindResource("greenCheckIcon");
+            } else
+            {
+                Elements[detailID]["Erledigt"] = "Nein";
+                checkBtn.Background = (Brush)this.FindResource("checkIcon");
+            }
         }
 
         /*private void getID(object sender, RoutedEventArgs e)
