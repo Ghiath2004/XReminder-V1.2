@@ -64,7 +64,6 @@ namespace XReminder
                     Dictionary<string, string> eleContent = entryRems.Value;
 
                     if ((listMode == "all" || (listMode == "checked" && eleContent["Erledigt"] == "Ja")) && (eleFilter == "" || eleFilter == eleContent["Kat"]))
-                    // if (listMode == "all" || (listMode == "checked" && eleContent["Erledigt"] == "Ja"))
                     {
                         anzEle++;
                         remID = eleContent["ID"];
