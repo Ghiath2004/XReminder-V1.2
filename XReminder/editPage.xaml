@@ -60,15 +60,15 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Text="Aufgabe bearbeiten" Foreground="#ffffff"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Titel" Foreground="#ffffff"/>
-                <TextBox Grid.Row="3" Grid.Column="0" Height="30" Text="" Name="titelBox"/>
+                <TextBox Grid.Row="3" Grid.Column="0" Padding="6" Height="30" Text="" Name="titelBox"/>
                 <TextBlock Grid.Row="2" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Datum bis" Foreground="#ffffff"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Height="30" Text="" Name="datumBox"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Padding="6" Height="30" Text="" Name="datumBox"/>
                 <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Priorität" Foreground="#ffffff"/>
-                <TextBox Grid.Row="6" Grid.Column="0" Height="30" Text="" Name="prioBox"/>
+                <TextBox Grid.Row="6" Grid.Column="0" Padding="6" Height="30" Text="" Name="prioBox"/>
                 <TextBlock Grid.Row="5" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>
-                <TextBox Grid.Row="6" Grid.Column="2" Height="30" Text="" Name="kategorieBox"/>
+                <TextBox Grid.Row="6" Grid.Column="2" Padding="6" Height="30" Text="" Name="kategorieBox"/>
                 <TextBlock Grid.Row="8" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>
-                <TextBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Name="bemBox" Height="140" Text=""/>
+                <TextBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Name="bemBox" Padding="6" Height="140" Text=""/>
                 <Button Grid.Row="11" Grid.Column="0" Height="40" Background="#ffffff" Foreground="#222222" Content="Abbrechen" Click="AbbrechenButton_Click"></Button>
                 <Button Grid.Row="11" Grid.Column="2" Height="40" Background="#ffffff" Foreground="#222222" Content="Bestätigen" Click="EditButton_Click" Name="editBtn"></Button>
             </Grid>
