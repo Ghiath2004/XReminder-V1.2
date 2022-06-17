@@ -44,8 +44,6 @@ namespace XReminder
             remKat = kategorieBox.Text;
             remBem = bemBox.Text;
 
-            // Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top"
-
             Grid remGrid = new Grid();
             remGrid.Margin = new Thickness(20, 20, 20, 0);
             remGrid.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -70,8 +68,6 @@ namespace XReminder
             remGrid.ColumnDefinitions.Add(gridCol2);
             remGrid.ColumnDefinitions.Add(gridCol3);
             remGrid.ColumnDefinitions.Add(gridCol4);
-
-            // Grid.Row = "0" Grid.Column = "0" TextAlignment = "Left" FontSize = "30" Text = "Auto waschen" Foreground = "#ffffff" />
            
             TextBlock txtBlock1 = new TextBlock();
             txtBlock1.SetValue(Grid.RowProperty, 0);
@@ -81,8 +77,6 @@ namespace XReminder
             txtBlock1.Text = remTitel;
             txtBlock1.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
             remGrid.Children.Add(txtBlock1);
-
-            // Grid.Row = "1" Grid.Column = "0" TextAlignment = "Left" VerticalAlignment = "Bottom" FontSize = "15" Text = "03.06.2022 - Auto waschen und Staubsaugen" Foreground = "#ffffff" ></ TextBlock >
 
             TextBlock txtBlock2 = new TextBlock();
             txtBlock2.SetValue(Grid.RowProperty, 1);
@@ -94,7 +88,8 @@ namespace XReminder
             txtBlock2.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
             remGrid.Children.Add(txtBlock2);
 
-            // Grid.Row = "0" Grid.Column = "1" Grid.RowSpan = "2" Width = "50" Height = "50" Background = "{StaticResource checkIcon}"
+            Style style = new Style(typeof(Border));
+            style.Setters.Add(new Setter(Border.CornerRadiusProperty, new CornerRadius(10)));
 
             Button btn1 = new Button();
             btn1.SetValue(Grid.RowProperty, 0);
@@ -102,9 +97,8 @@ namespace XReminder
             btn1.SetValue(Grid.RowSpanProperty, 2);
             btn1.Width = 50;
             btn1.Height = 50;
-            // btn1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btn1.Resources.Add(typeof(Border), style);
             btn1.Background = (Brush)this.FindResource("checkIcon");
-            // btn1.Resources.Add(CornerRadius, 10);
             remGrid.Children.Add(btn1);
 
             Button btn2 = new Button();
@@ -113,16 +107,14 @@ namespace XReminder
             btn2.SetValue(Grid.RowSpanProperty, 2);
             btn2.Width = 50;
             btn2.Height = 50;
-            // btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btn2.Resources.Add(typeof(Border), style);
             btn2.Background = (Brush)this.FindResource("suchIcon");
-            // btn2.Resources.Add(CornerRadius, 10);
             remGrid.Children.Add(btn2);
 
             page2 Page2 = new page2(mainWindow);
             mainWindow.Content = Page2;
 
             Page2.Tag = remGrid;
-
         }
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
