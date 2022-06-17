@@ -12,12 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace XReminder
 {
-    /// <summary>
-    /// Interaktionslogik für page2.xaml
-    /// </summary>
     public partial class page2 : Page
     {
         string remID;
@@ -30,6 +29,7 @@ namespace XReminder
         int detailID = 0;
         int checkID = 0;
         string listMode;
+        int anzEle = 0;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
@@ -45,6 +45,7 @@ namespace XReminder
 
         private void FillReminders(object sender, RoutedEventArgs e)
         {
+            anzEle = 0;
             if(listMode == "checked")
             {
                 modeBtn.Background = (Brush)this.FindResource("checkAllIcon_checked");
@@ -61,11 +62,16 @@ namespace XReminder
 
                     if (listMode == "all" || listMode == "checked" && eleContent["Erledigt"] == "Ja")
                     {
+                        anzEle++;
                         remID = eleContent["ID"];
                         remTitel = eleContent["Titel"];
                         remTime = eleContent["Time"];
                         remKat = eleContent["Kat"];
                         remBem = eleContent["Bem"];
+                        if(remBem.Length > 20)
+                        {
+                            remBem = remBem.Substring(0, 20) + "...";
+                        }
                         remPrio = eleContent["Prio"];
 
                         Grid remGrid = new Grid();
@@ -149,6 +155,15 @@ namespace XReminder
                         Reminders.Children.Add(remGrid);
                     }
                 }
+            }
+            if(anzEle == 0)
+            {
+                TextBlock keinErg = new TextBlock();
+                keinErg.Text = "Keine Ergebnisse gefunden";
+                keinErg.FontSize = 30;
+                keinErg.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                keinErg.Padding = new Thickness(20, 20, 20, 20);
+                Reminders.Children.Add(keinErg);
             }
         }
 
