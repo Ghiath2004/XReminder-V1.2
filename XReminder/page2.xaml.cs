@@ -66,6 +66,10 @@ namespace XReminder
                         remDatum = eleContent["Datum"];
                         remKat = eleContent["Kat"];
                         remBem = eleContent["Bem"];
+                        if(remBem.Length > 20)
+                        {
+                            remBem = remBem.Substring(0, 20) + "...";
+                        }
                         remPrio = eleContent["Prio"];
 
                         Grid remGrid = new Grid();
