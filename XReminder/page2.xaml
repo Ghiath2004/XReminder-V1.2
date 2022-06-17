@@ -37,7 +37,28 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
-        <UniformGrid Grid.Row="1" Columns="1" Name="Reminders" VerticalAlignment="Top" ></UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="1" Name="Reminders" VerticalAlignment="Top" MaxWidth="800">
+            <Grid MaxWidth="340" Margin="20 20 20 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="300"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Height="40" Padding="11" Text="Suchen..." GotFocus="removeTxt" Name="filterBtn">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20 0 0 20"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Button Grid.Column="1" Width="40" Height="40" Background="{StaticResource suchIcon}" Click="search">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 20 20 0"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </UniformGrid>
         <Grid Grid.Row="2" HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"></ColumnDefinition>

@@ -38,7 +38,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
-        <UniformGrid Grid.Row="1">
+        <UniformGrid Grid.Row="1" MaxWidth="800">
             <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"></RowDefinition>
@@ -110,7 +110,7 @@
                 <TextBox Grid.Row="6" Grid.Column="0" Padding="6" Height="30" Text="" Name="prioBox"/>
                 <TextBlock Grid.Row="5" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>
                 <TextBox Grid.Row="6" Grid.Column="2" Padding="6" Height="30" Text="" Name="kategorieBox"/>
-                <TextBlock Grid.Row="8" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>
+                <TextBlock Grid.Row="8" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Bemerkung" Foreground="#ffffff"/>
                 <TextBox Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Name="bemBox" Padding="6" Height="140" Text=""/>
                 <Button Grid.Row="11" Grid.Column="0" Height="40" Background="#ffffff" Foreground="#222222" Content="Abbrechen" Click="AbbrechenButton_Click"></Button>
                 <Button Grid.Row="11" Grid.Column="2" Height="40" Background="#ffffff" Foreground="#222222" Content="Erfassen" Click="AddButton_Click"></Button>

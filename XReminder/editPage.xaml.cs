@@ -40,7 +40,9 @@ namespace XReminder
             var RemID = this.Tag;
 
             titelBox.Text = Elements[editID]["Titel"];
-            datumBox.Text = Elements[editID]["Datum"];
+            datumBox.Text = Elements[editID]["Time"];
+            hrTime.Text = Elements[editID]["Hrs"];
+            minTime.Text = Elements[editID]["Min"];
             kategorieBox.Text = Elements[editID]["Kat"];
             prioBox.Text = Elements[editID]["Prio"];
             bemBox.Text = Elements[editID]["Bem"];
@@ -48,11 +50,13 @@ namespace XReminder
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-             Elements[editID]["Titel"] = titelBox.Text;
-             Elements[editID]["Datum"] = datumBox.Text;
-             Elements[editID]["Kat"] = kategorieBox.Text;
-             Elements[editID]["Prio"] = prioBox.Text;
-             Elements[editID]["Bem"] = bemBox.Text;
+            Elements[editID]["Titel"] = titelBox.Text;
+            Elements[editID]["Time"] = datumBox.Text;
+            Elements[editID]["Hrs"] = hrTime.Text;
+            Elements[editID]["Min"] = minTime.Text;
+            Elements[editID]["Kat"] = kategorieBox.Text;
+            Elements[editID]["Prio"] = prioBox.Text;
+            Elements[editID]["Bem"] = bemBox.Text;
 
             page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;

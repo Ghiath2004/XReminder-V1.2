@@ -38,7 +38,7 @@ namespace XReminder
         private void FillReminder(object sender, RoutedEventArgs e)
         {
             Titel.Text = Elements[detailID]["Titel"];
-            Datum.Text = Elements[detailID]["Time"];
+            Datum.Text = Elements[detailID]["Time"] + " " + Elements[detailID]["Hrs"] + ":" + Elements[detailID]["Min"];
             Bem.Text = Elements[detailID]["Bem"];
             if(Elements[detailID]["Erledigt"] == "Ja")
             {

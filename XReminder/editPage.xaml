@@ -39,7 +39,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
         <UniformGrid Grid.Row="1">
-            <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top" MaxWidth="800">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition Height="20"></RowDefinition>

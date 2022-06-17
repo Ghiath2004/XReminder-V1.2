@@ -30,23 +30,26 @@ namespace XReminder
         int checkID = 0;
         string listMode;
         int anzEle = 0;
+        string eleFilter;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
 
-        public page2(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements, string mode = "all")
+        public page2(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements, string mode = "all", string filter = "")
         {
             InitializeComponent();
             mainWindow = w;
             aktID = ID;
             Elements = allElements;
             listMode = mode;
+            eleFilter = filter;
         }
 
         private void FillReminders(object sender, RoutedEventArgs e)
         {
             anzEle = 0;
-            if(listMode == "checked")
+            filterBtn.Text = eleFilter;
+            if (listMode == "checked")
             {
                 modeBtn.Background = (Brush)this.FindResource("checkAllIcon_checked");
             } else
@@ -60,17 +63,18 @@ namespace XReminder
                     Int32 eleIndex = entryRems.Key;
                     Dictionary<string, string> eleContent = entryRems.Value;
 
-                    if (listMode == "all" || listMode == "checked" && eleContent["Erledigt"] == "Ja")
+                    if ((listMode == "all" || (listMode == "checked" && eleContent["Erledigt"] == "Ja")) && (eleFilter == "" || eleFilter == eleContent["Kat"]))
+                    // if (listMode == "all" || (listMode == "checked" && eleContent["Erledigt"] == "Ja"))
                     {
                         anzEle++;
                         remID = eleContent["ID"];
                         remTitel = eleContent["Titel"];
-                        remTime = eleContent["Time"];
+                        remTime = eleContent["Time"] + " " + eleContent["Hrs"] + ":" + eleContent["Min"];
                         remKat = eleContent["Kat"];
                         remBem = eleContent["Bem"];
-                        if(remBem.Length > 20)
+                        if(remBem.Length > 50)
                         {
-                            remBem = remBem.Substring(0, 20) + "...";
+                            remBem = remBem.Substring(0, 50) + "...";
                         }
                         remPrio = eleContent["Prio"];
 
@@ -82,12 +86,12 @@ namespace XReminder
                         RowDefinition gridRow1 = new RowDefinition();
                         gridRow1.Height = new GridLength(40);
                         RowDefinition gridRow2 = new RowDefinition();
-                        gridRow2.Height = new GridLength(40);
+                        gridRow2.Height = new GridLength(20);
                         remGrid.RowDefinitions.Add(gridRow1);
                         remGrid.RowDefinitions.Add(gridRow2);
 
                         ColumnDefinition gridCol1 = new ColumnDefinition();
-                        gridCol1.Width = new GridLength();
+                        gridCol1.Width = new GridLength(100, GridUnitType.Star);
                         ColumnDefinition gridCol2 = new ColumnDefinition();
                         gridCol2.Width = new GridLength(50);
                         ColumnDefinition gridCol3 = new ColumnDefinition();
@@ -161,8 +165,9 @@ namespace XReminder
                 TextBlock keinErg = new TextBlock();
                 keinErg.Text = "Keine Ergebnisse gefunden";
                 keinErg.FontSize = 30;
+                keinErg.TextAlignment = TextAlignment.Center;
                 keinErg.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-                keinErg.Padding = new Thickness(20, 20, 20, 20);
+                keinErg.Padding = new Thickness(20, 10, 20, 20);
                 Reminders.Children.Add(keinErg);
             }
         }
@@ -205,7 +210,26 @@ namespace XReminder
             {
                 listMode = "all";
             }
-            page2 Page2 = new page2(mainWindow, aktID, Elements, listMode);
+            page2 Page2 = new page2(mainWindow, aktID, Elements, listMode, eleFilter);
+            mainWindow.Content = Page2;
+        }
+
+        private void removeTxt(object sender, RoutedEventArgs e)
+        {
+            if(((TextBox)sender).Text == "Suchen...")
+            {
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void search(object sender, RoutedEventArgs e)
+        {
+            eleFilter = filterBtn.Text;
+            if(eleFilter == "Suchen...")
+            {
+                eleFilter = "";
+            }
+            page2 Page2 = new page2(mainWindow, aktID, Elements, listMode, eleFilter);
             mainWindow.Content = Page2;
         }
     }

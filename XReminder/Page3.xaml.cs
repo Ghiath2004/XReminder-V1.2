@@ -57,7 +57,9 @@ namespace XReminder
             var newEle = new Dictionary<string, string>();
             newEle["ID"] = newID.ToString();
             newEle["Titel"] = remTitel;
-            newEle["Time"] = remDatum + "  " + remHrs + ":" + remMin;
+            newEle["Time"] = remDatum;
+            newEle["Hrs"] = remHrs;
+            newEle["Min"] = remMin;
             newEle["Kat"] = remKat;
             newEle["Bem"] = remBem;
             newEle["Prio"] = remPrio;
