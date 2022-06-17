@@ -62,7 +62,8 @@
                 <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Titel" Foreground="#ffffff"/>
                 <TextBox Grid.Row="3" Grid.Column="0" Padding="6" Height="30" Text="" Name="titelBox"/>
                 <TextBlock Grid.Row="2" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Datum bis" Foreground="#ffffff"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Padding="6" Height="30" Text="" Name="datumBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontStyle="Normal"/>
+                <DatePicker Grid.Row="3" Grid.Column="2" Padding="6" Background="#ffffff" Name="datumBox" Height="30" SelectedDateFormat="Long" FirstDayOfWeek="Monday"/>
+                <!--<TextBox Grid.Row="3" Grid.Column="2" Padding="6" Height="30" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontStyle="Normal"/>-->
                 <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Priorität" Foreground="#ffffff"/>
                 <TextBox Grid.Row="6" Grid.Column="0" Padding="6" Height="30" Text="" Name="prioBox"/>
                 <TextBlock Grid.Row="5" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>
