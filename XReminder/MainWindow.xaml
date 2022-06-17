@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XReminder"
         mc:Ignorable="d"
-        Title="Aufgaben" Height="730" Width="700" Background="#333333">
+        Title="Aufgaben" Height="730" Width="700" Background="#333333" Loaded="FillReminders">
     <Window.Resources>
         <ImageBrush x:Key="addIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/plusIcon.png"></ImageBrush>
         <ImageBrush x:Key="suchIcon" ImageSource="https://gosler-und-chorbball.lebenssprache.ch/projektIcons/suchIcon.png"></ImageBrush>
@@ -36,7 +36,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
-        <UniformGrid Grid.Row="1">
+        <UniformGrid Grid.Row="1" Name="Reminders">
             <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"></RowDefinition>
@@ -57,7 +57,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Width="50" Height="50" Background="{StaticResource suchIcon}" Click="DetailButton_Click">
+                <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Width="50" Height="50" Background="{StaticResource suchIcon}" Click="DetailButton_Click" Tag="78">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -78,22 +78,6 @@
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
                     </Style>
-                    <!--<Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border x:Name="border" Background="{StaticResource checkAllIcon_checked}">
-                                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" TargetName="border" Value="{StaticResource checkAllIcon_checked}"></Setter>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>-->
                 </Button.Resources>
             </Button>
             <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource addIcon}" Click="AddButton_Click">

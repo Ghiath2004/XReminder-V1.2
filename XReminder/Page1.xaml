@@ -71,7 +71,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource trashIcon}" Click="DelReminder" Tag="1">
+            <Button Grid.Column="2" Width="50" Height="50" Background="{StaticResource trashIcon}" Click="delRemBest" Tag="1">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
@@ -85,7 +85,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="6" Width="50" Height="50" Background="{StaticResource editIcon}">
+            <Button Grid.Column="6" Width="50" Height="50" Background="{StaticResource editIcon}" Click="editRem" Tag="78">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
@@ -121,8 +121,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Left" FontSize="30" Text="Aufgabe löschen" Foreground="#ffffff"></TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextAlignment="Left" FontSize="15" Text="Wollen Sie die Aufgabe wirklich löschen?" Foreground="#ffffff"></TextBlock>
-                    <Button Grid.Row="2" Grid.Column="0" Width="200" Height="40" Background="#ffffff" Content="Abbrechen"></Button>
-                    <Button Grid.Row="2" Grid.Column="2" Width="200" Height="40" Background="#e34444" Content="Löschen" Foreground="#ffffff"></Button>
+                    <Button Grid.Row="2" Grid.Column="0" Width="200" Height="40" Background="#ffffff" Content="Abbrechen" Click="delRemAbb"></Button>
+                    <Button Grid.Row="2" Grid.Column="2" Width="200" Height="40" Background="#e34444" Content="Löschen" Foreground="#ffffff" Click="delRem" Name="delBtn" Tag="0"></Button>
                 </Grid>
             </Border>
         </Grid>

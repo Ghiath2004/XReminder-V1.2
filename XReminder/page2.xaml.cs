@@ -28,15 +28,30 @@ namespace XReminder
             mainWindow = w;
         }
 
+        private void FillReminders(object sender, RoutedEventArgs e)
+        {
+            object Rems = this.Tag;
+
+            if (Rems != null)
+            {
+                Reminders.Children.Add((UIElement)Rems);
+            }
+        }
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Page3 page3 = new Page3(mainWindow);
             mainWindow.Content = page3;
         }
+
         private void DetailButton_Click(object sender, RoutedEventArgs e)
         {
+            var RemID = ((Button)sender).Tag;
+
             Page1 page1 = new Page1(mainWindow);
             mainWindow.Content = page1;
+
+            page1.Tag = RemID;
         }
     }
 }

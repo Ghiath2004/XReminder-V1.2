@@ -34,12 +34,47 @@ namespace XReminder
             mainWindow.Content = Page2;
         }
 
-        private void DelReminder(object sender, RoutedEventArgs e)
+        private void delRemBest(object sender, RoutedEventArgs e)
         {
-            var RemID = ((Button)sender).Tag;
-
             Grid bestaetigungGrid = BestaetigungGrid;
             bestaetigungGrid.Visibility = Visibility.Visible;
         }
+
+        private void delRem(object sender, RoutedEventArgs e)
+        {
+            var RemID = this.Tag;
+
+            page2 Page2 = new page2(mainWindow);
+            mainWindow.Content = Page2;
+        }
+
+        private void delRemAbb(object sender, RoutedEventArgs e)
+        {
+            Grid bestaetigungGrid = BestaetigungGrid;
+            bestaetigungGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void editRem(object sender, RoutedEventArgs e)
+        {
+            var RemID = ((Button)sender).Tag;
+
+            editPage editpage = new editPage(mainWindow);
+            mainWindow.Content = editpage;
+
+            editpage.Tag = RemID;
+        }
+
+        /*private void getID(object sender, RoutedEventArgs e)
+        {
+            var RemID = ((Button)sender).Tag;
+            Grid bestaetigungGrid = BestaetigungGrid;
+            bestaetigungGrid.Visibility = Visibility.Visible;
+            delete(RemID);
+        }
+
+        public void delete(int remID)
+        {
+            
+        }*/
     }
 }
