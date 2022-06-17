@@ -36,7 +36,37 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
-        <UniformGrid Grid.Row="1" Name="Reminders"></UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="1" Name="Reminders" VerticalAlignment="Top" >
+            <!--<Grid Margin="20, 20, 20, 0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" FontSize="30" Text="Auto waschen" Foreground="#ffffff"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Text="03.06.2022 - Auto waschen und Staubsaugen" Foreground="#ffffff"></TextBlock>
+                <Button Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="50" Height="50" Background="{StaticResource checkIcon}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Width="50" Height="50" Background="{StaticResource suchIcon}" Click="DetailButton_Click" Tag="78">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>-->
+            <TextBlock Text="Keine Ergebnisse gefunden" FontSize="30" Foreground="#ffffff" Padding="20px" Name="keinErg"></TextBlock>
+        </UniformGrid>
         <Grid Grid.Row="2" HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"></ColumnDefinition>
@@ -44,7 +74,7 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
                 <ColumnDefinition Width="20"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="50" Height="50" Background="{StaticResource checkAllIcon}">
+            <Button Grid.Column="0" Width="50" Height="50" Background="{StaticResource checkAllIcon}" Click="changeMode" Name="modeBtn">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
@@ -90,5 +120,7 @@
                 </Grid>
             </Border>
         </Grid>
+        <TextBox Text="0" Visibility="Hidden" Name="lastID"></TextBox>
+        <TextBox Text="" Visibility="Hidden" Name="content"></TextBox>
     </Grid>
 </Window>

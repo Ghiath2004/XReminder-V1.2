@@ -30,6 +30,7 @@ namespace XReminder
         int detailID = 0;
         int checkID = 0;
         string listMode;
+        int anzEle = 0;
         Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
@@ -45,6 +46,7 @@ namespace XReminder
 
         private void FillReminders(object sender, RoutedEventArgs e)
         {
+            anzEle = 0;
             if(listMode == "checked")
             {
                 modeBtn.Background = (Brush)this.FindResource("checkAllIcon_checked");
@@ -61,6 +63,7 @@ namespace XReminder
 
                     if (listMode == "all" || listMode == "checked" && eleContent["Erledigt"] == "Ja")
                     {
+                        anzEle++;
                         remID = eleContent["ID"];
                         remTitel = eleContent["Titel"];
                         remDatum = eleContent["Datum"];
@@ -153,6 +156,10 @@ namespace XReminder
                         Reminders.Children.Add(remGrid);
                     }
                 }
+            }
+            if(anzEle == 0)
+            {
+                keinErg.Visibility = Visibility.Visible;
             }
         }
 
