@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:XReminder"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="730" d:DesignWidth="700" Background="#333333"
       Title="Aufgabe erfassen">
@@ -61,9 +62,50 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Left" FontSize="30" Text="Aufgabe erfassen" Foreground="#ffffff"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Titel" Foreground="#ffffff"/>
                 <TextBox Grid.Row="3" Grid.Column="0" Padding="6" Height="30" Text="" Name="titelBox"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Datum bis" Foreground="#ffffff"/>
-                <DatePicker Grid.Row="3" Grid.Column="2" Padding="6" Background="#ffffff" Name="datumBox" Height="30" SelectedDateFormat="Long" FirstDayOfWeek="Monday"/>
-                <!--<TextBox Grid.Row="3" Grid.Column="2" Padding="6" Height="30" Text="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontStyle="Normal"/>-->
+                <TextBlock Grid.Row="2" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Datum und Uhrzeit" Foreground="#ffffff"/>
+                <Grid Grid.Row="3" Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker Grid.Column="0" Name="datumBox" SelectedDate="{x:Static sys:DateTime.Now}" Padding="6" Height="30" Background="#ffffff"/>
+                    <ComboBox Name="hrTime" Grid.Column="2" Padding="6" Height="30" Background="#ffffff">
+                        <ComboBoxItem IsSelected="True">00</ComboBoxItem>
+                        <ComboBoxItem>01</ComboBoxItem>
+                        <ComboBoxItem>02</ComboBoxItem>
+                        <ComboBoxItem>03</ComboBoxItem>
+                        <ComboBoxItem>04</ComboBoxItem>
+                        <ComboBoxItem>05</ComboBoxItem>
+                        <ComboBoxItem>06</ComboBoxItem>
+                        <ComboBoxItem>07</ComboBoxItem>
+                        <ComboBoxItem>08</ComboBoxItem>
+                        <ComboBoxItem>09</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>11</ComboBoxItem>
+                        <ComboBoxItem>12</ComboBoxItem>
+                        <ComboBoxItem>13</ComboBoxItem>
+                        <ComboBoxItem>14</ComboBoxItem>
+                        <ComboBoxItem>15</ComboBoxItem>
+                        <ComboBoxItem>16</ComboBoxItem>
+                        <ComboBoxItem>17</ComboBoxItem>
+                        <ComboBoxItem>18</ComboBoxItem>
+                        <ComboBoxItem>19</ComboBoxItem>
+                        <ComboBoxItem>20</ComboBoxItem>
+                        <ComboBoxItem>21</ComboBoxItem>
+                        <ComboBoxItem>22</ComboBoxItem>
+                        <ComboBoxItem>23</ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Text=":" Grid.Column="3" Foreground="#ffffff" FontSize="25" TextAlignment="Center"/>
+                    <ComboBox Name="minTime" Grid.Column="4" Padding="6" Height="30" Background="#ffffff">
+                        <ComboBoxItem IsSelected="True">00</ComboBoxItem>
+                        <ComboBoxItem>15</ComboBoxItem>
+                        <ComboBoxItem>30</ComboBoxItem>
+                        <ComboBoxItem>45</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
                 <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Left" FontSize="15" Text="Priorität" Foreground="#ffffff"/>
                 <TextBox Grid.Row="6" Grid.Column="0" Padding="6" Height="30" Text="" Name="prioBox"/>
                 <TextBlock Grid.Row="5" Grid.Column="2" TextAlignment="Left" FontSize="15" Text="Kategorie" Foreground="#ffffff"/>

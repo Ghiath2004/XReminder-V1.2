@@ -21,7 +21,7 @@ namespace XReminder
     {
         string remID;
         string remTitel;
-        string remDatum;
+        string remTime;
         string remKat;
         string remBem;
         string remPrio;
@@ -65,7 +65,7 @@ namespace XReminder
                         anzEle++;
                         remID = eleContent["ID"];
                         remTitel = eleContent["Titel"];
-                        remDatum = eleContent["Datum"];
+                        remTime = eleContent["Time"];
                         remKat = eleContent["Kat"];
                         remBem = eleContent["Bem"];
                         if(remBem.Length > 20)
@@ -114,7 +114,7 @@ namespace XReminder
                         txtBlock2.TextAlignment = TextAlignment.Left;
                         txtBlock2.VerticalAlignment = VerticalAlignment.Bottom;
                         txtBlock2.FontSize = 15;
-                        txtBlock2.Text = remDatum + " - " + remBem;
+                        txtBlock2.Text = remTime + " - " + remBem;
                         txtBlock2.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
                         remGrid.Children.Add(txtBlock2);
 
