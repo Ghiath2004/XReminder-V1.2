@@ -39,20 +39,20 @@ namespace XReminder
         {
             var RemID = this.Tag;
 
-            titelBox.Text = "Titel";
-            kategorieBox.Text = "Kategorie";
-            datumBox.Text = "Datum";
-            prioBox.Text = "Prio";
-            bemBox.Text = "Bemerkung";
+            titelBox.Text = Elements[editID]["Titel"];
+            datumBox.Text = Elements[editID]["Datum"];
+            kategorieBox.Text = Elements[editID]["Kat"];
+            prioBox.Text = Elements[editID]["Prio"];
+            bemBox.Text = Elements[editID]["Bem"];
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var titel = titelBox;
-            var kat = kategorieBox;
-            var datum = datumBox;
-            var prio = prioBox;
-            var bem = bemBox;
+             Elements[editID]["Titel"] = titelBox.Text;
+             Elements[editID]["Datum"] = datumBox.Text;
+             Elements[editID]["Kat"] = kategorieBox.Text;
+             Elements[editID]["Prio"] = prioBox.Text;
+             Elements[editID]["Bem"] = bemBox.Text;
 
             page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
