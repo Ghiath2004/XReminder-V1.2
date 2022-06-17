@@ -74,7 +74,7 @@
                 <ColumnDefinition Width="50"></ColumnDefinition>
                 <ColumnDefinition Width="20"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="50" Height="50" Background="{StaticResource checkAllIcon}">
+            <Button Grid.Column="0" Width="50" Height="50" Background="{StaticResource checkAllIcon}" Click="changeMode" Name="modeBtn">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="25"></Setter>
