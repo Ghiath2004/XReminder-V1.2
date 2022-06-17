@@ -25,6 +25,8 @@ namespace XReminder
     {
         string remTitel;
         string remDatum;
+        string remHrs;
+        string remMin;
         string remKat;
         string remBem;
         string remPrio;
@@ -46,6 +48,8 @@ namespace XReminder
         {
             remTitel = titelBox.Text;
             remDatum = datumBox.Text;
+            remHrs = hrTime.Text;
+            remMin = minTime.Text;
             remKat = kategorieBox.Text;
             remBem = bemBox.Text;
             remPrio = prioBox.Text;
@@ -53,7 +57,8 @@ namespace XReminder
             var newEle = new Dictionary<string, string>();
             newEle["ID"] = newID.ToString();
             newEle["Titel"] = remTitel;
-            newEle["Datum"] = remDatum;
+
+            newEle["Time"] = remDatum + "  " + remHrs + " : " + remMin;
             newEle["Kat"] = remKat;
             newEle["Bem"] = remBem;
             newEle["Prio"] = remPrio;

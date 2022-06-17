@@ -41,7 +41,7 @@ namespace XReminder
 
             titelBox.Text = "Titel";
             kategorieBox.Text = "Kategorie";
-            datumBox.Text = "Datum";
+            
             prioBox.Text = "Prio";
             bemBox.Text = "Bemerkung";
         }
@@ -50,7 +50,8 @@ namespace XReminder
         {
             var titel = titelBox;
             var kat = kategorieBox;
-            var datum = datumBox;
+            var hours = hrTime;
+            var minutes = minTime;
             var prio = prioBox;
             var bem = bemBox;
 
