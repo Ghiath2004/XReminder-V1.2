@@ -37,9 +37,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" FontSize="30" TextAlignment="Left" VerticalAlignment="Center" Text="Logo" Padding="10" Foreground="#ffffff" Background="#222222" FontStyle="Italic"></TextBlock>
-        <UniformGrid Grid.Row="1" Columns="1" Name="Reminders" VerticalAlignment="Top" >
-            <TextBlock Text="Keine Ergebnisse gefunden" FontSize="30" Foreground="#ffffff" Padding="20px" Name="keinErg" Visibility="Hidden"></TextBlock>
-        </UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="1" Name="Reminders" VerticalAlignment="Top" ></UniformGrid>
         <Grid Grid.Row="2" HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"></ColumnDefinition>

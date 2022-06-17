@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace XReminder
 {
@@ -159,8 +161,16 @@ namespace XReminder
             }
             if(anzEle == 0)
             {
-                keinErg.Visibility = Visibility.Visible;
+                TextBlock keinErg = new TextBlock();
+                keinErg.Text = "Keine Ergebnisse gefunden";
+                keinErg.FontSize = 30;
+                keinErg.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                keinErg.Padding = new Thickness(20, 20, 20, 20);
+                Reminders.Children.Add(keinErg);
             }
+            // System.IO.File.WriteAllLines("reminders.txt", Elements.Select(x => "[" + x.Key + " " + x.Value + "]").ToArray());
+            // System.IO.File.WriteAllText("reminders.txt", JsonSerializer.Serialize(Elements));
+            // System.IO.File.WriteAllText("reminders.txt", "hii");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
