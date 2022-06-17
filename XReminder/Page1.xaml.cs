@@ -60,6 +60,7 @@ namespace XReminder
 
         private void delRem(object sender, RoutedEventArgs e)
         {
+            Elements.Remove(detailID);
             page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
@@ -81,25 +82,12 @@ namespace XReminder
             if(Elements[detailID]["Erledigt"] == "Nein")
             {
                 Elements[detailID]["Erledigt"] = "Ja";
-                checkBtn.Background = (Brush)this.FindResource("greenCheckIcon");
+                ((Button)sender).Background = (Brush)this.FindResource("greenCheckIcon");
             } else
             {
                 Elements[detailID]["Erledigt"] = "Nein";
-                checkBtn.Background = (Brush)this.FindResource("checkIcon");
+                ((Button)sender).Background = (Brush)this.FindResource("checkIcon");
             }
         }
-
-        /*private void getID(object sender, RoutedEventArgs e)
-        {
-            var RemID = ((Button)sender).Tag;
-            Grid bestaetigungGrid = BestaetigungGrid;
-            bestaetigungGrid.Visibility = Visibility.Visible;
-            delete(RemID);
-        }
-
-        public void delete(int remID)
-        {
-            
-        }*/
     }
 }
