@@ -120,5 +120,7 @@
                 </Grid>
             </Border>
         </Grid>
+        <TextBox Text="0" Visibility="Hidden" Name="lastID"></TextBox>
+        <TextBox Text="" Visibility="Hidden" Name="content"></TextBox>
     </Grid>
 </Page>
