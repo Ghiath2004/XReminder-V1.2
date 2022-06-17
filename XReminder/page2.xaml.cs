@@ -26,23 +26,24 @@ namespace XReminder
         string remKat;
         string remBem;
         string remPrio;
-        // string ele;
+        int aktID = 0;
+        Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
 
-        public page2(MainWindow w)
+        public page2(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
         {
             InitializeComponent();
             mainWindow = w;
+            aktID = ID;
+            Elements = allElements;
         }
 
         private void FillReminders(object sender, RoutedEventArgs e)
         {
-            Array rems = (Array)this.Tag;
-
-            if (rems != null)
+            if (Elements != null)
             {
-                foreach (KeyValuePair<Int32, Dictionary<string, string>> entryRems in rems)
+                foreach (KeyValuePair<Int32, Dictionary<string, string>> entryRems in Elements)
                 {
                     Int32 eleIndex = entryRems.Key;
                     Dictionary<string, string> eleContent = entryRems.Value;
@@ -128,7 +129,7 @@ namespace XReminder
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Page3 page3 = new Page3(mainWindow);
+            Page3 page3 = new Page3(mainWindow, aktID, Elements);
             mainWindow.Content = page3;
         }
 
@@ -136,7 +137,7 @@ namespace XReminder
         {
             var RemID = ((Button)sender).Tag;
 
-            Page1 page1 = new Page1(mainWindow);
+            Page1 page1 = new Page1(mainWindow, aktID, Elements);
             mainWindow.Content = page1;
 
             page1.Tag = RemID;

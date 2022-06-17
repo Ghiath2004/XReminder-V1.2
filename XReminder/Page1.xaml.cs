@@ -20,17 +20,22 @@ namespace XReminder
     /// </summary>
     public partial class Page1 : Page
     {
+        int aktID = 0;
+        Dictionary<int, Dictionary<string, string>> Elements;
+
         private MainWindow mainWindow = null;
 
-        public Page1(MainWindow w)
+        public Page1(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
         {
             InitializeComponent();
             mainWindow = w;
+            aktID = ID;
+            Elements = allElements;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            page2 Page2 = new page2(mainWindow);
+            page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
 
@@ -44,7 +49,7 @@ namespace XReminder
         {
             var RemID = this.Tag;
 
-            page2 Page2 = new page2(mainWindow);
+            page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
 
@@ -58,7 +63,7 @@ namespace XReminder
         {
             var RemID = ((Button)sender).Tag;
 
-            editPage editpage = new editPage(mainWindow);
+            editPage editpage = new editPage(mainWindow, aktID, Elements);
             mainWindow.Content = editpage;
 
             editpage.Tag = RemID;

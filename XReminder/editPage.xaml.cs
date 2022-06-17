@@ -20,12 +20,17 @@ namespace XReminder
     /// </summary>
     public partial class editPage : Page
     {
+        int aktID = 0;
+        Dictionary<int, Dictionary<string, string>> Elements;
+
         private MainWindow mainWindow = null;
 
-        public editPage(MainWindow w)
+        public editPage(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
         {
             InitializeComponent();
             mainWindow = w;
+            aktID = ID;
+            Elements = allElements;
         }
 
         private void FillReminder(object sender, RoutedEventArgs e)
@@ -47,12 +52,12 @@ namespace XReminder
             var prio = prioBox;
             var bem = bemBox;
 
-            page2 Page2 = new page2(mainWindow);
+            page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
-            page2 Page2 = new page2(mainWindow);
+            page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
     }

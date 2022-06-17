@@ -28,36 +28,28 @@ namespace XReminder
         string remKat;
         string remBem;
         string remPrio;
-        int lastID;
+        int aktID = 0;
         int newID;
-        string[] allEle;
-        string[] newEle;
-        // string[] rems;
-        UIElementCollection oldContent;
-        UIElementCollection newContent;
+        Dictionary<int, Dictionary<string, string>> Elements;
 
         private MainWindow mainWindow = null;
 
-        public Page3(MainWindow w)
+        public Page3(MainWindow w, int ID, Dictionary<int, Dictionary<string, string>> allElements)
         {
             InitializeComponent();
             mainWindow = w;
+            aktID = ID;
+            Elements = allElements;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            page2 Page2 = new page2(mainWindow);
             remTitel = titelBox.Text;
             remDatum = datumBox.Text;
             remKat = kategorieBox.Text;
             remBem = bemBox.Text;
             remPrio = prioBox.Text;
-
-            object dskfj = Page2.Tag;
-
-            lastID = Int32.Parse(Page2.lastID.Text);
-            newID = lastID + 1;
-            Page2.lastID.Text = newID.ToString();
+            newID = aktID + 1;
             var newEle = new Dictionary<string, string>();
             newEle["ID"] = newID.ToString();
             newEle["Titel"] = remTitel;
@@ -66,17 +58,15 @@ namespace XReminder
             newEle["Bem"] = remBem;
             newEle["Prio"] = remPrio;
 
-            var allEle = new Dictionary<int, Dictionary<string, string>>();
-            allEle[newID] = newEle;
+            Elements[newID] = newEle;
 
-            Page2.Tag = allEle.ToArray();
-            Page2.content.Text = allEle.ToString();
+            page2 Page2 = new page2(mainWindow, newID, Elements);
 
             mainWindow.Content = Page2;
         }
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
-            page2 Page2 = new page2(mainWindow);
+            page2 Page2 = new page2(mainWindow, aktID, Elements);
             mainWindow.Content = Page2;
         }
     }
