@@ -17,9 +17,6 @@ using System.Text.Json.Serialization;
 
 namespace XReminder
 {
-    /// <summary>
-    /// Interaktionslogik für page2.xaml
-    /// </summary>
     public partial class page2 : Page
     {
         string remID;
@@ -168,9 +165,6 @@ namespace XReminder
                 keinErg.Padding = new Thickness(20, 20, 20, 20);
                 Reminders.Children.Add(keinErg);
             }
-            // System.IO.File.WriteAllLines("reminders.txt", Elements.Select(x => "[" + x.Key + " " + x.Value + "]").ToArray());
-            // System.IO.File.WriteAllText("reminders.txt", JsonSerializer.Serialize(Elements));
-            // System.IO.File.WriteAllText("reminders.txt", "hii");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
